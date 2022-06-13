@@ -16,14 +16,12 @@ So that events are displayed/hidden
         Scenario 2: User can expand an event to see its details
     	- Given the user has clicked to search for events
     	- When the user clicks on the event element
+        - Then the event details are expanded and displayed
 
-- Then the event details are expanded and displayed
-
-  Scenario 3: User can collapse an event to hide its details
-
-- Given the user no longer wants to see event details
-- When the user clicks on details
-- Then the event details collapse
+        Scenario 3: User can collapse an event to hide its details
+        - Given the user no longer wants to see event details
+        - When the user clicks on details
+        - Then the event details collapse
 
 ## Feature 3: Specify number of events
 
