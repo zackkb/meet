@@ -13,10 +13,16 @@ const credentials = {
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
   redirect_uris: ["https://zackkb.github.io/meet/"],
-  javascript_origins: ["https://zackkb.github.io", "http://localhost:3000"],
+  javascript_origins: [
+    "https://zackkb.github.io",
+    "http://localhost:3000",
+    "http://localhost:8080",
+  ],
 };
 
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
+
+console.log(client_id, client_secret);
 
 const oAuth2Client = new google.auth.OAuth2(
   client_id,
@@ -41,7 +47,7 @@ module.exports.getAuthURL = async () => {
   };
 };
 
-module.exports.getAccessToken = (event) => {
+module.exports.getAccessToken = async (event) => {
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
@@ -68,7 +74,7 @@ module.exports.getAccessToken = (event) => {
       };
     })
     .catch((err) => {
-      console.error(err);
+      console.log(err);
       return {
         statusCode: 500,
         headers: {
@@ -79,7 +85,7 @@ module.exports.getAccessToken = (event) => {
     });
 };
 
-module.exports.getCalendarEvents = (event) => {
+module.exports.getCalendarExports = async (event) => {
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
@@ -111,7 +117,6 @@ module.exports.getCalendarEvents = (event) => {
     );
   })
     .then((results) => {
-      // Respond with OAuth token
       return {
         statusCode: 200,
         headers: {
@@ -121,7 +126,7 @@ module.exports.getCalendarEvents = (event) => {
       };
     })
     .catch((err) => {
-      console.error(err);
+      console.log(err);
       return {
         statusCode: 500,
         headers: {

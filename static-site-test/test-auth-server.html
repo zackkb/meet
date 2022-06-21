@@ -61,8 +61,10 @@
           })
           .then(function (json) {
             const result = JSON.stringify(json);
+            console.log(result);
             // we get the value of authUrl
             const { authUrl } = JSON.parse(result);
+            console.log(authUrl);
             // then add it to the html
             resultElement.innerText = result;
             resultLink.href = authUrl;
@@ -85,6 +87,7 @@
           code = encodeURIComponent(codeValue.value);
         }
         const getTokenRequest = getToken + "/" + code;
+        console.log(getTokenRequest);
         fetch(getTokenRequest)
           .then(function (response) {
             return response.json();
