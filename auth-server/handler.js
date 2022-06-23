@@ -85,7 +85,7 @@ module.exports.getAccessToken = async (event) => {
     });
 };
 
-module.exports.getCalendarExports = async (event) => {
+module.exports.getCalendarEvents = async (event) => {
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
     client_secret,
