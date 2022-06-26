@@ -23,16 +23,17 @@ class CitySearch extends Component {
       query: suggestion,
       showSuggestions: false,
     });
-
-    this.props.updateEvents(suggestion);
+    this.props.updateEvents(suggestion, undefined);
   };
 
   render() {
     return (
       <div className="CitySearch">
+        <label>Search for location:</label>
         <input
           type="text"
           className="city"
+          placeholder="City"
           value={this.state.query}
           onChange={this.handleInputChanged}
           onFocus={() => {

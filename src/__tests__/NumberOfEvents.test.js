@@ -10,27 +10,19 @@ describe("<NumberOfEvents /> component", () => {
     );
   });
 
-  test("render text input", () => {
-    expect(NumberOfEventsWrapper.find(".numberOfEvents")).toHaveLength(1);
+  test("render number input", () => {
+    expect(NumberOfEventsWrapper.find(".NumberOfEvents")).toHaveLength(1);
   });
 
-  test("render text input correctly", () => {
-    const numberOfEvents = NumberOfEventsWrapper.state("numberOfEvents");
-    expect(
-      NumberOfEventsWrapper.find("#numberOfEvents__input").prop("value")
-    ).toBe(numberOfEvents);
-  });
-
-  test("change state when input changes", () => {
-    const eventObject = { target: { value: 32 } };
-    NumberOfEventsWrapper.find("#numberOfEvents__input").simulate(
-      "change",
-      eventObject
+  test("renders number input correctly", () => {
+    const query = NumberOfEventsWrapper.state("numberOfEvents");
+    expect(NumberOfEventsWrapper.find(".numberinput").prop("value")).toBe(
+      query
     );
-    expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(32);
   });
 
-  test("show number of events input label", () => {
-    expect(NumberOfEventsWrapper.find(".numberOfEvents label")).toHaveLength(1);
+  test("change number of events when input changes", () => {
+    NumberOfEventsWrapper.setState({ numberOfEvents: 32 });
+    expect(NumberOfEventsWrapper.state("numberOfEvents")).toEqual(32);
   });
 });
