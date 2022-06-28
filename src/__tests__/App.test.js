@@ -73,10 +73,10 @@ test('get list of all events when user selects "See all cities"', async () => {
 });
 
 // NumberOfEvents testing
-test("passing number of events", () => {
+test("pass number of events as 32 per default", () => {
   const AppWrapper = mount(<App />);
-  const AppNumberOfEventsState = AppWrapper.state("numberOfEvents");
-  expect(AppNumberOfEventsState).not.toEqual(undefined);
-  expect(AppWrapper.find(EventList).props().numberOfEvents).toEqual(32);
+  const NumberOfEventsState = AppWrapper.state("numberOfEvents");
+  expect(NumberOfEventsState).not.toEqual(undefined);
+  expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(32);
   AppWrapper.unmount();
 });
