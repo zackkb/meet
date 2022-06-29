@@ -24,7 +24,7 @@ class CitySearch extends Component {
       showSuggestions: false,
     });
 
-    this.props.updateEvents(suggestion);
+    this.props.updateEvents(suggestion, undefined);
   };
 
   render() {
@@ -35,6 +35,7 @@ class CitySearch extends Component {
         </p>
         <input
           type="text"
+          id="city-search"
           className="city"
           value={this.state.query}
           onChange={this.handleInputChanged}
