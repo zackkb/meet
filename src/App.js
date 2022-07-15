@@ -4,6 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from "./api";
+import { OfflineAlert } from "./Alert";
 import "./nprogress.css";
 
 class App extends Component {
@@ -17,6 +18,16 @@ class App extends Component {
     getEvents().then((events) => {
       this.setState({ events, locations: extractLocations(events) });
     });
+
+    if (!navigator.onLine) {
+      this.setState({
+        offlineText: "You are offline. You are viewing cached data.",
+      });
+    } else {
+      this.setState({
+        offlineText: "",
+      });
+    }
   }
 
   componentWillUnmount() {}
@@ -37,18 +48,12 @@ class App extends Component {
     });
   };
 
-  //updateNumberOfEvents = (numberOfEvents) => {
-  // this.setState(
-  //{
-  //  numberOfEvents,
-  //  },
-  //  this.updateEvents(this.state.locations, numberOfEvents)
-  // );
-  // };
-
   render() {
+    const { offlineText } = this.state;
     return (
       <div className="App">
+        <h1>Meet App</h1>
+        <OfflineAlert text={offlineText} />
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
