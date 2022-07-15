@@ -4,11 +4,17 @@ class Alert extends Component {
   constructor(props) {
     super(props);
     this.color = null;
+    this.backgroundColor = null;
+    this.borderRadius = null;
+    this.top = null;
   }
 
   getStyle = () => {
     return {
       color: this.color,
+      backgroundColor: this.backgroundColor,
+      borderRadius: this.borderRadius,
+      top: this.top,
     };
   };
 
@@ -24,14 +30,20 @@ class Alert extends Component {
 class InfoAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = "blue";
+    this.color = "rgb(21, 63, 177)";
+    this.backgroundColor = "rgb(182, 215, 255)";
+    this.borderRadius = "8px";
+    this.top = "205px";
   }
 }
 
 class ErrorAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = "red";
+    this.color = "rgb(162, 22, 22)";
+    this.backgroundColor = "rgb(255, 202, 202)";
+    this.borderRadius = "8px";
+    this.top = "290px";
   }
 }
 
