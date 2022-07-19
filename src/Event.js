@@ -11,41 +11,29 @@ class Event extends Component {
     });
   };
 
+  dateNewFormat = (eventDate) => {
+    const newDate = `${new Date(eventDate)}`;
+    return newDate;
+  };
+
+  changeBtnText = () => {
+    return `${this.state.collapsed ? "show" : "hide"} details`;
+  };
+
   render() {
     const { event } = this.props;
-    const { collapsed } = this.state;
+
     return (
       <div className="event">
-        <h2 className="summary">{event.summary}</h2>
-
-        <p className="start-date">
-          {event.start.dateTime} ({event.start.timeZone})
-        </p>
-
-        <p className="location">
-          @{event.summary} | {event.location}
-        </p>
-
-        <button
-          className={`${collapsed ? "show" : "hide"}-details`}
-          onClick={this.handleClick}
-        >
-          {collapsed ? "Show Details" : "Hide Details"}
-        </button>
-
-        {!collapsed && (
-          <div
-            className={`extra-details ${
-              this.state.collapsed ? "hide" : "show"
-            }`}
-          >
-            <h3>About the event:</h3>
-            <a href={event.htmlLink} rel="noreferrer" target="_blank">
-              See details on Google Calendar
-            </a>
-            <p className="event-description">{event.description}</p>
-          </div>
+        <h3 className="title">{event.summary}</h3>
+        <p className="start-time">{this.dateNewFormat(event.start.dateTime)}</p>
+        <p className="location">{event.location}</p>
+        {!this.state.collapsed && (
+          <p className="event-details">{event.description}</p>
         )}
+        <button className="btn-details" onClick={this.handleClick}>
+          {this.changeBtnText()}
+        </button>
       </div>
     );
   }
