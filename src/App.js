@@ -84,15 +84,12 @@ class App extends Component {
   };
 
   render() {
-    const {
-      locations,
-      numberOfEvents,
-      events,
-      offlineText,
-      showWelcomeScreen,
-    } = this.state;
+    const { locations, numberOfEvents, events } = this.state;
 
-    if (!showWelcomeScreen) return <div className="App" />;
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className="App" />;
+    const { offlineText } = this.state;
+
     return (
       <div className="App">
         <h1>Meet App</h1>
@@ -129,8 +126,10 @@ class App extends Component {
         <h2>Events</h2>
         <EventList events={events} />
         <WelcomeScreen
-          showWelcomeScreen={showWelcomeScreen}
-          getAccessToken={getAccessToken}
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
         />
       </div>
     );
