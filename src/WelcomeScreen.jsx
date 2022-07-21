@@ -1,6 +1,5 @@
 import React from "react";
 import "./WelcomeScreen.css";
-import welcome1 from "./welcome1.png";
 
 function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
@@ -28,9 +27,6 @@ o.svg"
           >
             <b>Sign in with google</b>
           </button>
-          <div>
-            <img className="image" src={welcome1} alt="Welcome to Meet!" />
-          </div>
         </div>
       </div>
       <a
