@@ -6,7 +6,7 @@ function WelcomeScreen(props) {
     <div className="WelcomeScreen">
       <h1>Welcome to the Meet app</h1>
       <p>
-        <img src="src/meet_welcome.png" alt="Welcome to Meet!" class="image" />
+        <img src="meet_welcome.png" alt="Welcome to Meet!" class="image" />
       </p>
       <h4>
         Log in to see upcoming events around the world for full-stack developers
