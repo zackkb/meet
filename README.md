@@ -1,67 +1,121 @@
-# meet
+# meet app
 
-A serverless, progressive web app (PWA) built with React using test-driven development (TDD). An application for users to find events based on their location. The app also utilizes Google Calendar API
+## Project description
 
-## Feature 2: Show/Hide or Expand/Collapse list of events.
+This is a serverless, progressive web application (PWA) built with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
-As a user,
-I should be able to expand/collapse a list of events
-So that events are displayed/hidden
+### Features
 
-        Scenario 1: An event element is collapsed by default
-    	- Given the user has not clicked to search for events
-    	- When the user has not clicked on any event element
-    	- Then the event details are collapsed
+#### Feature 1: Filter events by city
 
-        Scenario 2: User can expand an event to see its details
-    	- Given the user has clicked to search for events
-    	- When the user clicks on the event element
-        - Then the event details are expanded and displayed
+##### Scenario 1: When user hasn't searched for a city, show upcoming events from all cities
 
-        Scenario 3: User can collapse an event to hide its details
-        - Given the user no longer wants to see event details
-        - When the user clicks on details
-        - Then the event details collapse
+- Given user hasn't searched for any city
+- When the user opens the app
+- Then the user should see a list of upcoming events from all locations
 
-## Feature 3: Specify number of events
+##### Scenario 2: User should see a list of suggestions when they searched for a city
 
-As a user,
-I should be able to specify the number of events displayed
-so I can view how many events are in my area
+- Given the main page is open
+- When user starts typing in the city textbox
+- Then the user should see a list of cities (suggestions) that match what they've typed
 
-        Scenario 1: When user hasn’t specified a number, 32 is the default number
-    	- Given the user has not specified the number of events
-    	- When a user searches for events
-    	- Then the default number of 32 searches are displayed
+##### Scenario 3: User can select a city from the suggested list
 
-        Scenario 2: User can change the number of events they want to see
-    	- Given the user wants to change the number of events displayed
-    	- When the user selects the number of events
-    	- Then the number of selected events are displayed
+- Given the user was typing “Berlin” in the city textbox
+- And the list of suggested cities is showing
+- When the user selects a city (e.g., “Berlin, Germany”) from the list
+- Then their city should be changed to that city (i.e., “Berlin, Germany”)
+- And the user should receive a list of upcoming events in that city
 
-## Feature 4: Use the app when offline
+#### Feature 2: Show/hide an event's details
 
-As a user,
-I should be able to view information offline
-So I can still use the app without an internet connection.
+##### Scenario 1: An event element is collapsed by default
 
-        Scenario 1: Show cached data when there’s no internet connection
-    	- Given the user has no internet connection
-    	- When the user wants to use the app offline
-    	- Then cached data will be displayed
+- Given the user has started the app
+- When the user doesn't click on an event
+- Then the event details will be collapsed
 
-        Scenario 2: Show error when user changes the settings (city, time range)
-    	- Given the user wants to change the settings
-    	- When the user attempts to change the settings
-    	- Then an error will be displayed
+##### Scenario 2: User can expand an event to see its details
 
-## Feature 5: Data visualization
+- Given the user has started the app
+- When the user clicks on an event
+- Then the event details will expand
 
-As a user,
-I should be able to see a chart of upcoming events in each city
-So that upcoming events are displayed in organized detail.
+##### Scenario 3: User can collapse an event to hide its details
 
-        Scenario 1: Show a chart with the number of upcoming events in each city
-    	- Given the user wants to see a list of upcoming events in each city
-    	- When a user views a chart with listed events
-    	- Then a chart with events in each city is displayed
+- Given the user has expanded the details of an event
+- When the user clicks on the event details
+- Then the event details will collapse
+
+#### Feature 3: Specify number of Events
+
+##### Scenario 1: When user hasn't specified a number, 32 is the default number
+
+- Given the user is on the main page
+- When the user has not specified the numbers of events
+- Then the default number of displayed events will be 32
+
+##### Scenario 2: User can change the number of events they want to see
+
+- Given the user is on the main page
+- When the user changes the number of events
+- Then the number of events will change accordingly
+
+#### Feature 4: Use the app when offline
+
+##### Scenario 1: Show cached data when there’s no internet connection
+
+- Given the user has no internet connection
+- When the user starts the app
+- Then the app will operate with cached data
+
+##### Scenario 2: Show error when user changes the settings (city, time range)
+
+- Given the user has no internet connection
+- When the user tries to change the settings
+- Then the app will display an error
+
+#### Feature 5: Data visualization
+
+##### Scenario 1: Show a chart with the number of upcoming events in each city
+
+- Given the user has started the app
+- When the user has not searched for a city
+- Then a chart with the number of upcoming events will be displayed
+
+#### Feature 6: Select dark or light mode
+
+##### Scenario 1: Display the app in dark mode by default
+
+- Given that the user has not enabled browser settings for light mode
+- When the user has started the app
+- Then the app should be displayed in dark mode by default
+
+##### Scenario 2: User can change dark and light modes
+
+- Given the user has started the app
+- When the user clicks on the dark and light mode switch
+- Then the styling of the app will change the dark or light mode
+
+## Built With
+
+- Javascript
+- React
+
+## Dependencies
+
+- Axios
+- nprogress
+- React
+- React-DOM
+- React-Router-DOM
+- Recharts
+
+## Run the Project
+
+Use the command:
+
+```bash
+npm run start
+```
